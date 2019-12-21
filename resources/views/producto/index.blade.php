@@ -2,35 +2,39 @@
 @section('contenido')
 <main class="main">
     <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active"><a href="/">BACKEND - SISTEMA DE COMPRAS - VENTAS</a></li>
+    <ol class="breadcrumb bg-dark shadow">
+        <li class="breadcrumb-item active">
+            <a href="/" class="text-success text-uppercase">
+                PRODUCTO - SISTEMA DE COMPRAS - VENTAS
+            </a>
+        </li>
     </ol>
     <div class="container-fluid">
         <!-- Ejemplo de tabla Listado -->
-        <div class="card">
-            <div class="card-header">
+        <div class="card animated bounceInLeft ">
+            <div class="card-header shadow">
 
-                <h2>Listado de Productos</h2><br />
+                <h2>Listado de Productos</h2>
 
-                <button class="btn btn-primary btn-md" type="button" data-toggle="modal" data-target="#abrirmodal">
-                    <i class="fa fa-plus fa-2x"></i>&nbsp;&nbsp;Agregar Producto
+                <button class="btn btn btn-dark bg-gradient-dark btn-md shadow" type="button" data-toggle="modal" data-target="#abrirmodal">
+                    <i class="fa fa-plus"></i>Agregar Producto
                 </button>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-light table-responsive">
                 <div class="form-group row">
                     <div class="col-md-6">
                         {!!Form::open(array('url'=>'producto','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
                         <div class="input-group">
 
                             <input type="text" name="buscarTexto" class="form-control" placeholder="Buscar texto" value="{{$buscarTexto}}">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                            <button type="submit" class="btn btn-primary bg-gradient-primary"><i class="fa fa-search"></i> Buscar</button>
                         </div>
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-sm">
+                <table class="table table-bordered table-striped table-sm table-dark bg-gradient-black shadow">
                     <thead>
-                        <tr class="bg-primary">
+                        <tr class="bg-gradient-primary text-uppercase text-center text-truncate">
 
                             <th>Categoria</th>
                             <th>Producto</th>
@@ -47,7 +51,8 @@
 
                         @foreach($productos as $prod)
 
-                        <tr>
+                        <tr class="text-center ">
+
 
                             <td>{{$prod->categoria}}</td>
                             <td>{{$prod->nombre}}</td>
@@ -56,21 +61,24 @@
                             <td>{{$prod->stock}}</td>
 
                             <td>
-                                <img src="{{asset('storage/img/producto/'.$prod->imagen)}}" id="imagen1" alt="{{$prod->nombre}}" class="img-responsive" width="100px" height="100px">
+                                <a href="{{asset('storage/img/producto/'.$prod->imagen)}}" target="_blank">
+                                    <img src="{{asset('storage/img/producto/'.$prod->imagen)}}" id="imagen1" alt="{{$prod->nombre}}" class="img-responsive" width="100px" height="100px">
+                                </a>
+
                             </td>
 
 
                             <td>
 
                                 @if($prod->condicion=="1")
-                                <button type="button" class="btn btn-success btn-md">
+                                <button type="button" class="btn btn-success bg-gradient-succes bg-gradient-success btn-sm shadow">
 
                                     <i class="fa fa-check fa-2x"></i> Activo
                                 </button>
 
                                 @else
 
-                                <button type="button" class="btn btn-danger btn-md">
+                                <button type="button" class="btn btn-danger bg-gradient-danger bg-gradient-danger btn-sm shadow">
 
                                     <i class="fa fa-check fa-2x"></i> Desactivado
                                 </button>
@@ -80,7 +88,7 @@
                             </td>
 
                             <td>
-                                <button type="button" class="btn btn-info btn-md" data-id_producto="{{$prod->id}}" data-id_categoria="{{$prod->idcategoria}}" data-codigo="{{$prod->codigo}}" data-stock="{{$prod->stock}}" data-nombre="{{$prod->nombre}}" data-precio_venta="{{$prod->precio_venta}}" data-toggle="modal" data-target="#abrirmodalEditar">
+                                <button type="button" class="btn btn-info bg-gradient-info btn-sm shadow" data-id_producto="{{$prod->id}}" data-id_categoria="{{$prod->idcategoria}}" data-codigo="{{$prod->codigo}}" data-stock="{{$prod->stock}}" data-nombre="{{$prod->nombre}}" data-precio_venta="{{$prod->precio_venta}}" data-toggle="modal" data-target="#abrirmodalEditar">
                                     <i class="fa fa-edit fa-2x"></i> Editar
                                 </button> &nbsp;
                             </td>
@@ -90,14 +98,13 @@
 
                                 @if($prod->condicion)
 
-
-                                <button type="button" class="btn btn-danger btn-sm" data-id_producto="{{$prod->id}}" data-toggle="modal" data-target="#cambiarEstado">
+                                <button type="button" class="btn btn-danger btn-sm bg-gradient-danger btn-sm shadow" data-id_producto="{{$prod->id}}" data-toggle="modal" data-target="#cambiarEstado">
                                     <i class="fa fa-times fa-2x"></i> Desactivar
                                 </button>
 
                                 @else
 
-                                <button type="button" class="btn btn-success btn-sm" data-id_producto="{{$prod->id}}" data-toggle="modal" data-target="#cambiarEstado">
+                                <button type="button" class="btn btn-success bg-gradient-success btn-sm shadow" data-id_producto="{{$prod->id}}" data-toggle="modal" data-target="#cambiarEstado">
                                     <i class="fa fa-lock fa-2x"></i> Activar
                                 </button>
 
@@ -211,8 +218,8 @@
 
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times fa-2x"></i>Cerrar</button>
-                            <button type="submit" class="btn btn-success"><i class="fa fa-lock fa-2x"></i>Aceptar</button>
+                            <button type="button" class="btn btn-danger bg-gradient-danger" data-dismiss="modal"><i class="fa fa-times fa-2x"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-success bg-gradient-success"><i class="fa fa-lock fa-2x"></i>Aceptar</button>
                         </div>
 
 

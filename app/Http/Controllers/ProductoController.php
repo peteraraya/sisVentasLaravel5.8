@@ -161,20 +161,18 @@ class ProductoController extends Controller
     public function destroy(Request $request)
     {
         // 
-            $producto= Producto::findOrFail($request->id_producto);
+        $producto = Producto::findOrFail($request->id_producto);
 
-            if($producto->condicion=="1"){
-                
-                $producto->condicion= '0';
-                $producto->save();
-                return Redirect::to("producto");
-        
-            } else{
+        if ($producto->condicion == "1") {
 
-                $producto->condicion= '1';
-                $producto->save();
-                return Redirect::to("producto");
+            $producto->condicion = '0';
+            $producto->save();
+            return Redirect::to("producto");
+        } else {
 
-            }
+            $producto->condicion = '1';
+            $producto->save();
+            return Redirect::to("producto");
+        }
     }
 }

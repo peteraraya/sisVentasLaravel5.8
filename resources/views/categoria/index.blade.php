@@ -7,36 +7,36 @@
 <!-- Contenido Principal -->
 <main class="main">
     <!-- Breadcrumb -->
-    <ol class="breadcrumb bg-dark">
+    <ol class="breadcrumb bg-dark shadow">
         <li class="breadcrumb-item active">
-            <a href="/" class="text-success ">Categorías - SISTEMA DE COMPRAS - VENTAS</a></li>
+            <a href="/" class="text-success text-uppercase">Categorías - SISTEMA DE COMPRAS - VENTAS</a></li>
     </ol>
     <div class="container-fluid">
         <!-- Ejemplo de tabla Listado -->
-        <div class="card">
-            <div class="card-header  shadow-lg">
+        <div class="card animated bounceInLeft shadow">
+            <div class="card-header shadow">
 
-                <h2>Listado de Categorías</h2>
+                <h2 class="text-dark font-weight-bold">Listado de Categorías</h2>
 
-                <button class="btn btn-primary btn-md" type="button" data-toggle="modal" data-target="#abrirmodal">
-                    <i class="fa fa-plus"></i><b> Categoría</b>
+                <button class="btn btn-success bg-gradient-success btn-md shadow-lg" type="button" data-toggle="modal" data-target="#abrirmodal">
+                    <i class="fa fa-plus"></i><b> Agregar Categoría</b>
                 </button>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-light table-responsive">
                 <div class="form-group row">
-                    <div class="col-md-6 table-responsive">
+                    <div class="col-md-6">
                         {!!Form::open(array('url'=>'categoria','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
                         <div class="input-group">
 
-                            <input type="text" name="buscarTexto" class="form-control" placeholder="Buscar texto" value="{{$buscarTexto}}">
-                            <button type="submit" class="btn btn-primary shadow"><i class="fa fa-search"></i> Buscar</button>
+                            <input type="text" name="buscarTexto" class="form-control text-muted" placeholder="Buscar por nombre,descripcion etc ...." value="{{$buscarTexto}}">
+                            <button type="submit" class="btn btn-primary bg-gradient-primary shadow"><i class="fa fa-search"></i> Buscar</button>
                         </div>
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-sm">
+                <table class="table table-bordered table-striped table-sm table-dark shadow bg-gradient-dark">
                     <thead>
-                        <tr class="bg-primary text-center ">
+                        <tr class="bg-gradient-primary text-center text-uppercase  text-truncate">
 
                             <th>Categoría</th>
                             <th>Descripción</th>
@@ -52,16 +52,25 @@
 
                             <td>{{$cat->nombre}}</td>
                             <td>{{$cat->descripcion}}</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-success btn-sm shadow">
 
-                                    <i class="fa fa-check fa-2x"></i> Activo
+                            @if($cat->condicion)
+                            <td class="text-center">
+                                <button type="button" class="btn btn-success bg-gradient-success btn-sm shadow " style="pointer-events: none;">
+                                    <i class="fa fa-check fa-2x"></i> Activado
                                 </button>
 
                             </td>
+                            @else
+                            <td class="text-center">
+                                <button type="button" class="btn btn-danger bg-gradient-danger btn-sm shadow " style="pointer-events: none;">
+                                    <i class="fa fa-times fa-2x"></i> Desactivado
+                                </button>
+
+                            </td>
+                            @endif
 
                             <td class="text-center">
-                                <button type="button" class="btn btn-info btn-sm shadow" data-id_categoria="{{$cat->id}}" data-nombre="{{$cat->nombre}}" data-descripcion="{{$cat->descripcion}}" data-toggle="modal" data-target="#abrirmodalEditar">
+                                <button type="button" class="btn btn-info bg-gradient-info btn-sm shadow" data-id_categoria="{{$cat->id}}" data-nombre="{{$cat->nombre}}" data-descripcion="{{$cat->descripcion}}" data-toggle="modal" data-target="#abrirmodalEditar">
 
                                     <i class="fa fa-edit fa-2x"></i> Editar
                                 </button> &nbsp;
@@ -70,13 +79,13 @@
                             <td class="text-center">
                                 @if($cat->condicion)
 
-                                <button type="button" class="btn btn-danger btn-sm shadow" data-id_categoria="{{$cat->id}}" data-toggle="modal" data-target="#cambiarEstado">
+                                <button type="button" class="btn btn-danger bg-gradient-danger  btn-sm shadow" data-id_categoria="{{$cat->id}}" data-toggle="modal" data-target="#cambiarEstado">
                                     <i class="fa fa-times fa-2x"></i> Desactivar
                                 </button>
 
                                 @else
 
-                                <button type="button" class="btn btn-success btn-sm shadow" data-id_categoria="{{$cat->id}}" data-toggle="modal" data-target="#cambiarEstado">
+                                <button type="button" class="btn btn-success bg-gradient-success  btn-sm shadow" data-id_categoria="{{$cat->id}}" data-toggle="modal" data-target="#cambiarEstado">
                                     <i class="fa fa-lock fa-2x"></i> Activar
                                 </button>
 
@@ -99,7 +108,7 @@
     <div class="modal fade" id="abrirmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-primary modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-gradient-info">
                     <h4 class="modal-title">Agregar categoría</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -130,7 +139,7 @@
     <div class="modal fade" id="abrirmodalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-primary modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-gradient-info ">
                     <h4 class="modal-title">Actualizar categoría</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
