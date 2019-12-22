@@ -11,14 +11,14 @@
     </ol>
     <div class="container-fluid">
         <!-- Ejemplo de tabla Listado -->
-        <div class="card animated bounceInLeft ">
-            <div class="card-header shadow">
+        <div class="card animated bounceInLeft shadow">
+            <div class="card-header bg-grey-soft-zipek shadow">
 
-                <h2>Listado de Clientes</h2>
+                <h4 class="card-title pb-2">Listado de Clientes</h4>
 
-                <button class="btn btn-dark bg-gradient-dark btn-md shadow-lg" type="button" data-toggle="modal" data-target="#abrirmodal">
-                    <i class="fa fa-plus"></i>Agregar Cliente
-                </button>
+                    <button class="btn btn-dark bg-gradient-dark btn-md shadow-lg" type="button" data-toggle="modal" data-target="#abrirmodal">
+                        <i class="fa fa-plus"></i>Agregar Cliente
+                    </button>
             </div>
             <div class="card-body bg-light table-responsive">
                 <div class="form-group row">

@@ -9,11 +9,15 @@
     <meta name="keyword" content="Sistema Compras-Ventas con Laravel y Vue Js">
     <title>SisVentas Laravel</title>
     <!-- Icons -->
-    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet"> -->
+    <script src="https://kit.fontawesome.com/f89c29ca65.js" crossorigin="anonymous"></script>
     <link href="{{asset('css/simple-line-icons.min.css')}}" rel="stylesheet">
+    <!-- libs -->
     <link href="{{asset('css/libs/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs/background-gradient.css')}}" rel="stylesheet">
+    <link href="{{asset('css/libs/materialize.css')}}" rel="stylesheet">
     <!-- Main styles for this application -->
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap441/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -39,27 +43,40 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src="img/avatars/peter.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                    <span class="d-md-down-none">Peter Araya </span>
+                    <img src="{{asset('storage/img/usuario/'.Auth::user()->imagen)}}" class="img-avatar" class="img-avatar" alt="admin@bootstrapmaster.com">
+                    <span class="d-md-down-none">{{Auth::user()->usuario}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-header text-center">
                         <strong>Cuenta</strong>
                     </div>
-                    <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fa fa-lock"></i> Cerrar sesión</a>
 
-                    <form id="logout-form" action="" method="POST" style="display: none;">
-
+                    <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
                     </form>
                 </div>
-            </li>
+                </li>
         </ul>
     </header>
 
     <div class="app-body ">
-        @include('plantilla.sidebar')
 
+        @if(Auth::check())
+        @if (Auth::user()->idrol == 1)
+        @include('plantilla.sidebaradministrador')
+
+        @elseif (Auth::user()->idrol == 2)
+        @include('plantilla.sidebarvendedor')
+
+        @elseif (Auth::user()->idrol == 3)
+        @include('plantilla.sidebarcomprador')
+        @else
+
+        @endif
+
+        @endif
         <!-- Contenido Principal -->
 
         @yield('contenido')
@@ -78,8 +95,6 @@
 
     <script src="{{asset('js/bootstrap441/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/pace.min.js')}}"></script>
-
-
     <!-- Plugins and scripts required by all views -->
     <script src="{{asset('js/Chart.min.js')}}"></script>
     <!-- GenesisUI main scripts -->
@@ -89,7 +104,7 @@
     <script src="{{asset('js/views/producto.js')}}"></script>
     <script src="{{asset('js/views/proveedor.js')}}"></script>
     <script src="{{asset('js/views/cliente.js')}}"></script>
-
+    <script src="{{asset('js/views/user.js')}}"></script>
 </body>
 
 </html>

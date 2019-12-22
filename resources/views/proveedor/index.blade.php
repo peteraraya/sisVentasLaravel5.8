@@ -8,14 +8,14 @@
     <div class="container-fluid">
         <!-- Ejemplo de tabla Listado -->
         <div class="card animated bounceInLeft shadow">
-            <div class="card-header shadow">
+            <div class="card-header bg-grey-soft-zipek shadow">
 
-                <h2 class="text-bold text-dark">Listado de Proveedores</h2>
-                <button class="btn btn-success bg-gradient-success btn-md shadow" type="button" data-toggle="modal" data-target="#abrirmodal">
-                    <i class="fa fa-plus"></i>Agregar Proveedor
-                </button>
+                <h4 class="card-title pb-2">Listado de Proveedores</h4>
+                    <button class="btn btn-dark bg-gradient-dark btn-md shadow" type="button" data-toggle="modal" data-target="#abrirmodal">
+                        <i class="fa fa-plus"></i>Agregar Proveedor
+                    </button>
             </div>
-            <div class="card-body table-responsive">
+            <div class="card-body bg-light table-responsive">
                 <div class="form-group row">
                     <div class="col-md-6">
                         {!!Form::open(array('url'=>'proveedor','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
@@ -59,7 +59,6 @@
                                 </button> &nbsp;
                             </td>
 
-
                         </tr>
 
                         @endforeach
@@ -75,7 +74,7 @@
     </div>
     <!--Inicio del modal agregar-->
     <div class="modal fade" id="abrirmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-primary bg-gradient-primary modal-lg" role="document">
+        <div class="modal-dialog modal-primary  modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Agregar proveedor</h4>
@@ -86,12 +85,10 @@
 
                 <div class="modal-body">
 
-
                     <form action="{{route('proveedor.store')}}" method="post" class="form-horizontal">
 
                         @csrf
                         <!-- {{ csrf_field() }} -->
-
 
                         @include('proveedor.form')
 
@@ -108,7 +105,7 @@
 
     <!--Inicio del modal actualizar-->
     <div class="modal fade" id="abrirmodalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-primary bg-gradient-primary modal-lg" role="document">
+        <div class="modal-dialog modal-primary  modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Actualizar proveedor</h4>
@@ -118,7 +115,6 @@
                 </div>
 
                 <div class="modal-body">
-
 
                     <form action="{{route('proveedor.update','test')}}" method="post" class="form-horizontal">
 

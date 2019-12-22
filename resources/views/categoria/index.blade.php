@@ -7,29 +7,30 @@
 <!-- Contenido Principal -->
 <main class="main">
     <!-- Breadcrumb -->
-    <ol class="breadcrumb bg-dark shadow">
+    <ol class="breadcrumb bg-gradient-dark shadow">
         <li class="breadcrumb-item active">
-            <a href="/" class="text-success text-uppercase">Categorías - SISTEMA DE COMPRAS - VENTAS</a></li>
+            <a href="/" class="text-success text-uppercase green-text ">Categorías - SISTEMA DE COMPRAS - VENTAS</a></li>
     </ol>
     <div class="container-fluid">
         <!-- Ejemplo de tabla Listado -->
         <div class="card animated bounceInLeft shadow">
-            <div class="card-header shadow">
+            <div class="card-header shadow bg-grey-soft-zipek">
 
-                <h2 class="text-dark font-weight-bold">Listado de Categorías</h2>
+                <h4 class="card-title pb-2">Listado de Categorías</h4>
+        
 
-                <button class="btn btn-success bg-gradient-success btn-md shadow-lg" type="button" data-toggle="modal" data-target="#abrirmodal">
-                    <i class="fa fa-plus"></i><b> Agregar Categoría</b>
+                <button class="btn btn-dark bg-gradient-dark btn-md shadow-lg" type="button" data-toggle="modal" data-target="#abrirmodal">
+                    <i class="fa fa-plus"></i>Agregar Categoría
                 </button>
             </div>
-            <div class="card-body bg-light table-responsive">
+            <div class="card-body bg-gradient-light table-responsive">
                 <div class="form-group row">
                     <div class="col-md-6">
                         {!!Form::open(array('url'=>'categoria','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
                         <div class="input-group">
 
                             <input type="text" name="buscarTexto" class="form-control text-muted" placeholder="Buscar por nombre,descripcion etc ...." value="{{$buscarTexto}}">
-                            <button type="submit" class="btn btn-primary bg-gradient-primary shadow"><i class="fa fa-search"></i> Buscar</button>
+                            <button type="submit" class="btn btn-primary bg-gradient-primary shadow p-2"><i class="fa fa-search"></i> Buscar</button>
                         </div>
                         {{Form::close()}}
                     </div>
@@ -48,7 +49,7 @@
                     <tbody>
                         @foreach($categorias as $cat)
 
-                        <tr>
+                        <tr class="text-left ">
 
                             <td>{{$cat->nombre}}</td>
                             <td>{{$cat->descripcion}}</td>

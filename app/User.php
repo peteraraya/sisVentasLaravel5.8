@@ -16,8 +16,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
-    ];
+        'id', 'nombre', 'tipo_documento', 'num_documento', 'direccion', 'telefono', 'email', 'usuario', 'password', 'condicion', 'idrol','imagen'
+    ];  
 
     /**
      * The attributes that should be hidden for arrays.
@@ -27,7 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    // Referencia al modelo rol
+    public function rol()
+    {
+        // Un usuario pertence a un rol
+        return $this->belongsTo('App\Rol');
+    }
     /**
      * The attributes that should be cast to native types.
      *

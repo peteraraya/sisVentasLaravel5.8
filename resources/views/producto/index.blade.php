@@ -12,13 +12,13 @@
     <div class="container-fluid">
         <!-- Ejemplo de tabla Listado -->
         <div class="card animated bounceInLeft ">
-            <div class="card-header shadow">
+            <div class="card-header shadow bg-grey-soft-zipek">
 
-                <h2>Listado de Productos</h2>
+                <h4 class="card-title pb-2">Listado de Productos</h4>
 
-                <button class="btn btn btn-dark bg-gradient-dark btn-md shadow" type="button" data-toggle="modal" data-target="#abrirmodal">
-                    <i class="fa fa-plus"></i>Agregar Producto
-                </button>
+                    <button class="btn btn btn-dark bg-gradient-dark btn-md shadow" type="button" data-toggle="modal" data-target="#abrirmodal">
+                        <i class="fa fa-plus"></i>Agregar Producto
+                    </button>
             </div>
             <div class="card-body bg-light table-responsive">
                 <div class="form-group row">
@@ -62,7 +62,7 @@
 
                             <td>
                                 <a href="{{asset('storage/img/producto/'.$prod->imagen)}}" target="_blank">
-                                    <img src="{{asset('storage/img/producto/'.$prod->imagen)}}" id="imagen1" alt="{{$prod->nombre}}" class="img-responsive" width="100px" height="100px">
+                                    <img id="imgTbl_Productos" src="{{asset('storage/img/producto/'.$prod->imagen)}}" id="imagen1" alt="{{$prod->nombre}}" class="img-thumbnail" >
                                 </a>
 
                             </td>
