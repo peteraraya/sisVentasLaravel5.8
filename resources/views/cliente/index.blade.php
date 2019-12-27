@@ -32,7 +32,7 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-sm table-dark shadow">
+                <table class="table table-bordered table-striped table-sm shadow">
                     <thead>
                         <tr class="bg-gradient-primary text-center text-uppercase text-truncate">
 

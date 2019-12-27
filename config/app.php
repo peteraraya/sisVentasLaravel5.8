@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Sistema de ventas'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Santiago',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'en_Es',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,12 +161,11 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
         Intervention\Image\ImageServiceProvider::class,
         /*
          * Package Service Providers...
          */
-
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -175,7 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        
+        Collective\Html\HtmlServiceProvider::class,
    
     ],
 
@@ -227,6 +226,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

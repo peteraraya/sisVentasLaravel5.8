@@ -16,9 +16,9 @@
 
                 <h4 class="card-title pb-2">Listado de Productos</h4>
 
-                    <button class="btn btn btn-dark bg-gradient-dark btn-md shadow" type="button" data-toggle="modal" data-target="#abrirmodal">
-                        <i class="fa fa-plus"></i>Agregar Producto
-                    </button>
+                <button class="btn btn btn-dark bg-gradient-dark btn-md shadow" type="button" data-toggle="modal" data-target="#abrirmodal">
+                    <i class="fa fa-plus"></i>Agregar Producto
+                </button>
             </div>
             <div class="card-body bg-light table-responsive">
                 <div class="form-group row">
@@ -32,14 +32,14 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-sm table-dark bg-gradient-black shadow">
+                <table class="table table-bordered table-striped table-sm  shadow">
                     <thead>
                         <tr class="bg-gradient-primary text-uppercase text-center text-truncate">
 
                             <th>Categoria</th>
                             <th>Producto</th>
                             <th>Codigo</th>
-                            <th>Precio Venta (CLP$)
+                            <th>Precio Venta (CLP)
                             <th>Stock</th>
                             <th>Imagen</th>
                             <th>Estado</th>
@@ -57,12 +57,12 @@
                             <td>{{$prod->categoria}}</td>
                             <td>{{$prod->nombre}}</td>
                             <td>{{$prod->codigo}}</td>
-                            <td>{{$prod->precio_venta}}</td>
+                            <td>$ {{number_format($prod->precio_venta,0, ",", ".")}}</td>
                             <td>{{$prod->stock}}</td>
 
                             <td>
                                 <a href="{{asset('storage/img/producto/'.$prod->imagen)}}" target="_blank">
-                                    <img id="imgTbl_Productos" src="{{asset('storage/img/producto/'.$prod->imagen)}}" id="imagen1" alt="{{$prod->nombre}}" class="img-thumbnail" >
+                                    <img id="imgTbl_Productos" src="{{asset('storage/img/producto/'.$prod->imagen)}}" id="imagen1" alt="{{$prod->nombre}}" class="img-thumbnail">
                                 </a>
 
                             </td>

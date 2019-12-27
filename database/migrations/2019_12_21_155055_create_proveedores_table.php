@@ -15,7 +15,7 @@ class CreateProveedoresTable extends Migration
     {
         Schema::dropIfExists('proveedores');
         Schema::create('proveedores', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('nombre',100)->nullable();
             $table->string('tipo_documento',20)->nullable();
             $table->string('num_documento',20)->nullable();

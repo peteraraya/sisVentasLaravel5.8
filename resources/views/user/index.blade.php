@@ -35,7 +35,7 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-md table-dark shadow bg-gradient-dark table-hover">
+                <table class="table table-bordered shadow  table-hover">
 
                     <thead>
                         <tr class="bg-primary-zipek text-center h6">
@@ -76,14 +76,14 @@
                             <td>
 
                                 @if($user->condicion=="1")
-                                <button type="button" class="btn btn-success btn-sm">
+                                <button type="button" class="btn btn-success bg-gradient-success btn-sm">
 
                                     <i class="fa fa-check"></i> Activo
                                 </button>
 
                                 @else
 
-                                <button type="button" class="btn btn-danger btn-sm">
+                                <button type="button" class="btn btn-danger bg-gradient-danger btn-sm">
 
                                     <i class="fa fa-check"></i> Desactivado
                                 </button>
@@ -93,7 +93,7 @@
                             </td>
 
                             <td>
-                                <button type="button" class="btn btn-info btn-sm " data-id_usuario="{{$user->id}}" data-nombre="{{$user->nombre}}" data-tipo_documento="{{$user->tipo_documento}}" data-num_documento="{{$user->num_documento}}" data-direccion="{{$user->direccion}}" data-telefono="{{$user->telefono}}" data-email="{{$user->email}}" data-id_rol="{{$user->idrol}}" data-usuario="{{$user->usuario}}" data-imagen1="{{$user->imagen}}" data-toggle="modal" data-target="#abrirmodalEditar">
+                                <button type="button" class="btn btn-info bg-gradient-info btn-sm " data-id_usuario="{{$user->id}}" data-nombre="{{$user->nombre}}" data-tipo_documento="{{$user->tipo_documento}}" data-num_documento="{{$user->num_documento}}" data-direccion="{{$user->direccion}}" data-telefono="{{$user->telefono}}" data-email="{{$user->email}}" data-id_rol="{{$user->idrol}}" data-usuario="{{$user->usuario}}" data-imagen1="{{$user->imagen}}" data-toggle="modal" data-target="#abrirmodalEditar">
                                     <i class="fa fa-edit"></i> Editar
                                 </button> &nbsp;
                             </td>
@@ -103,13 +103,13 @@
 
                                 @if($user->condicion)
 
-                                <button type="button" class="btn btn-danger btn-sm" data-id_usuario="{{$user->id}}" data-toggle="modal" data-target="#cambiarEstado">
+                                <button type="button" class="btn btn-danger bg-gradient-danger btn-sm" data-id_usuario="{{$user->id}}" data-toggle="modal" data-target="#cambiarEstado">
                                     <i class="fa fa-times "></i> Desactivar
                                 </button>
 
                                 @else
 
-                                <button type="button" class="btn btn-success btn-sm" data-id_usuario="{{$user->id}}" data-toggle="modal" data-target="#cambiarEstado">
+                                <button type="button" class="btn btn-success bg-gradient-success btn-sm" data-id_usuario="{{$user->id}}" data-toggle="modal" data-target="#cambiarEstado">
                                     <i class="fa fa-lock "></i> Activar
                                 </button>
 

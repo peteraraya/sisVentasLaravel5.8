@@ -20,7 +20,7 @@
         
 
                 <button class="btn btn-dark bg-gradient-dark btn-md shadow-lg" type="button" data-toggle="modal" data-target="#abrirmodal">
-                    <i class="fa fa-plus"></i>Agregar Categoría
+                    <i class="fas fa-plus"></i>Agregar Categoría
                 </button>
             </div>
             <div class="card-body bg-gradient-light table-responsive">
@@ -35,7 +35,7 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-sm table-dark shadow bg-gradient-dark">
+                <table class="table table-bordered table-striped table-sm  shadow ">
                     <thead>
                         <tr class="bg-gradient-primary text-center text-uppercase  text-truncate">
 

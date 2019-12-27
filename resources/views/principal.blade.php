@@ -57,7 +57,7 @@
                         {{ csrf_field() }}
                     </form>
                 </div>
-                </li>
+            </li>
         </ul>
     </header>
 
@@ -91,6 +91,7 @@
 
     <!-- Bootstrap and necessary plugins -->
     <script src="{{asset('js/jquery.min.js')}}"></script>
+    @stack('scripts')
     <script src="{{asset('js/Popper/popper.min.js')}}"></script>
 
     <script src="{{asset('js/bootstrap441/bootstrap.min.js')}}"></script>
@@ -99,12 +100,14 @@
     <script src="{{asset('js/Chart.min.js')}}"></script>
     <!-- GenesisUI main scripts -->
     <script src="{{asset('js/template.js')}}"></script>
+    <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
     <!-- Vistas -->
     <script src="{{asset('js/views/categoria.js')}}"></script>
     <script src="{{asset('js/views/producto.js')}}"></script>
     <script src="{{asset('js/views/proveedor.js')}}"></script>
     <script src="{{asset('js/views/cliente.js')}}"></script>
     <script src="{{asset('js/views/user.js')}}"></script>
+    <script src="{{asset('js/views/compra.js')}}"></script>
 </body>
 
 </html>
