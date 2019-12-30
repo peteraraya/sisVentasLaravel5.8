@@ -27,9 +27,9 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-sm table-dark shadow">
+                <table class="table table-bordered bg-table-ventas-zipek table-sm  shadow">
                     <thead>
-                        <tr class="bg-primary text-truncate  text-center">
+                        <tr class="bg-gradient-dark text-truncate  text-center">
 
                             <th>Proveedor</th>
                             <th>Tipo de Documento</th>
@@ -46,16 +46,16 @@
 
                         <tr class="text-center">
 
-                            <td>{{$prove->nombre}}</td>
-                            <td>{{$prove->tipo_documento}}</td>
-                            <td>{{$prove->num_documento}}</td>
-                            <td>{{$prove->telefono}}</td>
-                            <td>{{$prove->email}}</td>
-                            <td>{{$prove->direccion}}</td>
+                            <td class="align-middle">{{$prove->nombre}}</td>
+                            <td class="align-middle">{{$prove->tipo_documento}}</td>
+                            <td class="align-middle">{{$prove->num_documento}}</td>
+                            <td class="align-middle">{{$prove->telefono}}</td>
+                            <td class="align-middle">{{$prove->email}}</td>
+                            <td class="align-middle">{{$prove->direccion}}</td>
 
-                            <td>
+                            <td class="align-middle">
                                 <button type="button" class="btn btn-info bg-gradient-info btn-md" data-id_proveedor="{{$prove->id}}" data-nombre="{{$prove->nombre}}" data-tipo_documento="{{$prove->tipo_documento}}" data-num_documento="{{$prove->num_documento}}" data-direccion="{{$prove->direccion}}" data-telefono="{{$prove->telefono}}" data-email="{{$prove->email}}" data-toggle="modal" data-target="#abrirmodalEditar">
-                                    <i class="fa fa-edit fa-2x"></i> Editar
+                                    <i class="fas fa-edit "></i> Editar
                                 </button> &nbsp;
                             </td>
 

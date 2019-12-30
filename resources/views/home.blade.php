@@ -1,15 +1,198 @@
 @extends('principal')
 @section('contenido')
 <main class="main">
-    <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active"><a href="/">HOME - SISTEMA DE COMPRAS - VENTAS</a></li>
-    </ol>
-    <div class="container-fluid">
-        HOME
-    </div>
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active text-uppercase"><a href="/">Dashboard - SISTEMA DE COMPRAS - VENTAS</a></li>
+            </ol>
+            <div class="container-fluid">
+                                    
+                                    
+                @foreach($totales as $total)
+
+                <div class="row">
+
+                            <div class="col-lg-6 col-xs-6">
+                            <!-- small box -->
+                            <div class="card text-white bg-gradient-navy shadwow">
+                                <div class="card-body pb-0">
+                                    <button class="btn btn-transparent p-0 float-right" type="button">
+                                    <i class="fa fa-shopping-cart fa-3x text-light"></i>
+                                    </button>
+                                    <div class="text-value h3"><strong>${{number_format($total->totalcompra,0, ",", ".")}} <sub><small>(MES ACTUAL)</small></sub></strong></div>
+                                    <div class="h2">Compras</div>
+                                </div>
+                                <div class="chart-wrapper mt-3 mx-3" style="height:35px;">
+                                    <a href="{{url('compra')}}" class="small-box-footer h4">Compras <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                                
+                            </div>
+                            </div>
+
+                            <div class="col-lg-6 col-xs-6">
+                            <!-- small box -->
+                            <div class="card text-white bg-gradient-orange shadow">
+                                <div class="card-body pb-0">
+                                    <button class="btn btn-transparent p-0 float-right" type="button">
+                                    <i class="fa fa-suitcase fa-3x"></i>
+                                    </button>
+                                    <div class="text-value h3"><strong>${{ number_format($total->totalventa,0, ",", ".")}} <sub><small>(MES ACTUAL)</small></sub></strong></div>
+                                    <div class="h2">Ventas</div>
+                                </div>
+                                <div class="chart-wrapper mt-2 mx-3 float-right">
+                                    <a href="{{url('venta')}}" class="small-box-footer h4">Ventas <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                                
+                            </div>
 
 
-</main>
+                            </div><!-- ./col -->
+
+                        </div>
+
+                @endforeach
+
+
+                        <!-- Estadísticas gráficos -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- compras - meses -->
+
+                                <div class="card card-chart shadow-lg">
+                                    <div class="card-header">
+                                        <h4 class="text-center">Compras - Meses</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="ct-chart">
+                                            <canvas id="compras">                                                
+                                            </canvas>
+                                        </div>
+                                    </div>
+                                                
+                            </div>
+
+                            </div><!--col-md-6-->
+                        
+                            <div class="col-md-6">
+                            
+                                <!-- ventas - meses -->
+                                
+                                <div class="card card-chart shadow-lg">
+                                    <div class="card-header">
+                                        <h4 class="text-center">Ventas - Meses</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="ct-chart">
+                                            <canvas id="ventas">                                                
+                                            </canvas>
+                                        </div>
+                                    </div>
+                                                
+                                </div>
+                            
+
+                            </div><!-- col-md-6 -->
+
+                        </div><!--row-->
+
+                        
+                      
+
+                @push ('scripts')
+                <script src="{{asset('js/Chart.min.js')}}"></script>
+
+                    <script>
+                    $(function () {
+                        /* ChartJS
+                        * -------
+                        * Here we will create a few charts using ChartJS
+                        */
+
+                        //--------------
+                        //- AREA CHART -
+                        //--------------
+
+                        /**inicio de compras mes */
+                        
+                        var varCompra=document.getElementById('compras').getContext('2d');
+
+                            var charCompra = new Chart(varCompra, {
+                                type: 'line',
+                                data: {
+                                    labels: [<?php foreach ($comprasmes as $reg)
+                                        { 
+                                    
+                                    setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+                                    $mes_traducido=strftime('%B',strtotime($reg->mes));
+                            
+                                    echo '"'. $mes_traducido.'",';} ?>],
+                                    datasets: [{
+                                        label: 'Compras',
+                                        data: [<?php foreach ($comprasmes as $reg)
+                                            {echo ''. $reg->totalmes.',';} ?>],
+                                    
+                                        borderColor: 'rgba(255, 50, 132, 1)',
+                                        borderWidth:1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+
+                            /*fin compras mes* */
+
+
+                        /**inicio de ventas mes */
+                        var varVenta=document.getElementById('ventas').getContext('2d');
+
+                            var charVenta = new Chart(varVenta, {
+                                type: 'bar',
+                                data: {
+                                    labels: [<?php foreach ($ventasmes as $reg)
+                                {
+                                    setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+                                    $mes_traducido=strftime('%B',strtotime($reg->mes));
+                                    
+                                    echo '"'. $mes_traducido.'",';} ?>],
+                                    datasets: [{
+                                        label: 'Ventas',
+                                        data: [<?php foreach ($ventasmes as $reg)
+                                        {echo ''. $reg->totalmes.',';} ?>],
+                                        backgroundColor: 'rgba(30, 204, 20, 1)',
+                                        borderColor: 'rgba(54, 162, 235, 0.2)',
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+
+                    });
+
+                    /*fin ventas mes* */
+
+                       
+                    
+                    </script>
+                @endpush
+
+            </div>
+           
+                
+        </main>
 
 @endsection

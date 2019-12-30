@@ -18,7 +18,7 @@
 
          <div class="col-md-9">
 
-             <select class="form-control" name="tipo_documento" id="tipo_documento">
+             <select class="form-control selectpicker" name="tipo_documento" id="tipo_documento">
 
                  <option value="0" disabled>Seleccione</option>
                  <option value="RUT">RUT</option>

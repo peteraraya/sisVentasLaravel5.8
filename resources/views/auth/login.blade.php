@@ -12,13 +12,7 @@
 
                         <img id="imagenLogin" class="img-responsive " src="{{ asset('img/login/carro_compras.png') }}" alt="Compras y Ventas">
 
-                        <!-- <div id="tituloLogin" class="text-center h4">
-                            Compras y Ventas
-                        </div> -->
-
-
                     </div>
-
 
                     <div class="input-group mb-3{{$errors->has('usuario' ? 'is-invalid' : '')}}">
                         <div class="input-group-prepend">

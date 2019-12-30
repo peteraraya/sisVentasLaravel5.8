@@ -6,7 +6,7 @@
         <li class="breadcrumb-item active">
             <a href="/" class="text-success text-uppercase green-text ">Compras - SISTEMA DE COMPRAS - VENTAS</a></li>
     </ol>
-    <div class="container-fluid p-1">
+    <div class="container-fluid p-2">
         <!-- Ejemplo de tabla Listado -->
         <div class="card animated bounceInLeft shadow">
             <div class="card-header bg-grey-soft-zipek">
@@ -34,9 +34,10 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped bg-gradient-light text-dark">
+                <div class="table-responsive-md">
+                <table class="table table-bordered bg-table-ventas-zipek shadow">
                     <thead>
-                        <tr class="bg-primary-zipek text-center shadow">
+                        <tr class="bg-gradient-dark text-center  p-0 shadow">
 
                             <th>Detalle</th>
                             <th>Fecha Compra</th>
@@ -56,8 +57,8 @@
 
                         @foreach($compras as $comp)
 
-                        <tr class="text-center">
-                            <td>
+                         <tr class="text-center p-0 m-0">
+                            <td class="align-middle">
 
                                 <a href="{{URL::action('CompraController@show',$comp->id)}}">
                                     <button type="button" class="btn btn-info bg-gradient-info mt-1">
@@ -67,14 +68,14 @@
                                 </a>
                             </td>
 
-                            <td>{{$comp->fecha_compra}}</td>
-                            <td>{{$comp->num_compra}}</td>
-                            <td>{{$comp->proveedor}}</td>
-                            <td>{{$comp->tipo_identificacion}}</td>
-                            <td>{{$comp->nombre}}</td>
-                            <td>${{number_format($comp->total,0)}}</td>
-                            <td>{{$comp->impuesto}}</td>
-                            <td>
+                            <td class="align-middle">{{date('d-m-Y h:i:s', strtotime($comp->fecha_compra))}}</td>
+                            <td class="align-middle">{{$comp->num_compra}}</td>
+                            <td class="align-middle">{{$comp->proveedor}}</td>
+                            <td class="align-middle">{{$comp->tipo_identificacion}}</td>
+                            <td class="align-middle">{{$comp->nombre}}</td>
+                            <td class="align-middle">${{number_format($comp->total,0, ",", ".")}}</td>
+                            <td class="align-middle">{{$comp->impuesto}}</td>
+                            <td class="align-middle">
 
                                 @if($comp->estado=="Registrado")
                                 <button type="button" class="btn btn-success">
@@ -94,7 +95,7 @@
                             </td>
 
 
-                            <td>
+                            <td class="align-middle">
 
                                 @if($comp->estado=="Registrado")
 
@@ -112,11 +113,11 @@
 
                             </td>
 
-                            <td>
+                            <td class="align-middle">
 
                                 <a href="{{url('pdfCompra',$comp->id)}}" target="_blank">
 
-                                    <button type="button" class="btn btn-info bg-gradient-info">
+                                    <button type="button" class="btn btn-secondary bg-gradient-secondary">
 
                                         <i class="fa fa-file-pdf-o"></i> Descargar PDF
                                     </button> &nbsp;
@@ -130,7 +131,7 @@
 
                     </tbody>
                 </table>
-
+                </div>
                 {{$compras->render()}}
 
             </div>
@@ -143,7 +144,7 @@
     <div class="modal fade" id="cambiarEstadoCompra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-danger" role="document">
             <div class="modal-content shadow-sm">
-                <div class="modal-header bg-gradient-info">
+                <div class="modal-header bg-gradient-danger">
                     <h4 class="modal-title">Cambiar Estado de Compra</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>

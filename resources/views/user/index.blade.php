@@ -23,7 +23,7 @@
                     <i class="fa fa-plus"></i>Agregar Usuario
                 </button>
             </div>
-            <div class="card-body bg-gradient-light table-responsive">
+            <div class="card-body bg-gradient-light">
                 <div class="form-group row">
                     <div class="col-md-6">
                         {!!Form::open(array('url'=>'user','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
@@ -35,14 +35,15 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered shadow  table-hover">
+                <div class="table-responsive">
+                <table class="table table-bordered bg-table-ventas-zipek shadow">
 
                     <thead>
-                        <tr class="bg-primary-zipek text-center h6">
+                        <tr class="bg-primary-zipek text-center align-middle">
 
                             <th>Nombre</th>
-                            <th>Tipo Documento</th>
-                            <th>Número</th>
+                            <th>Documento<br>
+                                N° Número</th>
                             <th>Dirección</th>
                             <th>Teléfono</th>
                             <th>Email</th>
@@ -58,22 +59,23 @@
 
                         @foreach($usuarios as $user)
 
-                        <tr class="small text-center text-truncate">
+                        <tr class=" align-content-center text-center text-truncate align-middle">
 
-                            <td>{{$user->nombre}}</td>
-                            <td>{{$user->tipo_documento}}</td>
-                            <td>{{$user->num_documento}}</td>
-                            <td>{{$user->direccion}}</td>
-                            <td>{{$user->telefono}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->usuario}}</td>
-                            <td>{{$user->rol}}</td>
+                             <td class="align-middle">{{$user->nombre}}</td>
+                             <td class="align-middle">{{$user->tipo_documento}} : 
+                                                      {{$user->num_documento}}
+                            </td>
+                             <td class="align-middle">{{$user->direccion}}</td>
+                             <td class="align-middle">{{$user->telefono}}</td>
+                             <td class="align-middle">{{$user->email}}</td>
+                             <td class="align-middle">{{$user->usuario}}</td>
+                             <td class="align-middle">{{$user->rol}}</td>
 
-                            <td>
+                             <td class="align-middle">
                                 <img src="{{asset('storage/img/usuario/'.$user->imagen)}}" id="imagen1" alt="{{$user->nombre}}" class="img-responsive" width="100px" height="100px">
                             </td>
 
-                            <td>
+                            <td class="align-middle">
 
                                 @if($user->condicion=="1")
                                 <button type="button" class="btn btn-success bg-gradient-success btn-sm">
@@ -92,14 +94,14 @@
 
                             </td>
 
-                            <td>
+                            <td class="align-middle">
                                 <button type="button" class="btn btn-info bg-gradient-info btn-sm " data-id_usuario="{{$user->id}}" data-nombre="{{$user->nombre}}" data-tipo_documento="{{$user->tipo_documento}}" data-num_documento="{{$user->num_documento}}" data-direccion="{{$user->direccion}}" data-telefono="{{$user->telefono}}" data-email="{{$user->email}}" data-id_rol="{{$user->idrol}}" data-usuario="{{$user->usuario}}" data-imagen1="{{$user->imagen}}" data-toggle="modal" data-target="#abrirmodalEditar">
                                     <i class="fa fa-edit"></i> Editar
                                 </button> &nbsp;
                             </td>
 
 
-                            <td>
+                            <td class="align-middle">
 
                                 @if($user->condicion)
 
@@ -124,7 +126,7 @@
 
                     </tbody>
                 </table>
-
+            </div>
                 {{$usuarios->render()}}
 
             </div>

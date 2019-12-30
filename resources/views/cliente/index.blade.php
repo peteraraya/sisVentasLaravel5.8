@@ -32,13 +32,13 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-sm shadow">
+                <table class="table table-bordered bg-table-ventas-zipek table-dark table-sm shadow">
                     <thead>
-                        <tr class="bg-gradient-primary text-center text-uppercase text-truncate">
+                        <tr class="bg-gradient-dark text-center text-uppercase text-truncate">
 
                             <th>Cliente</th>
                             <th>Tipo de Documento</th>
-                            <th>Número Documento</th>
+                            <th>N° Documento</th>
                             <th>Teléfono</th>
                             <th>Email</th>
                             <th>Dirección</th>
@@ -49,19 +49,19 @@
 
                         @foreach($clientes as $client)
 
-                        <tr class="text-truncate text-justify align-self-center">
+                        <tr class=" text-justify text-center">
 
-                            <td>{{$client->nombre}}</td>
-                            <td>{{$client->tipo_documento}}</td>
-                            <td>{{$client->num_documento}}</td>
-                            <td>{{$client->telefono}}</td>
-                            <td>{{$client->email}}</td>
-                            <td>{{$client->direccion}}</td>
+                            <td class="align-middle">{{$client->nombre}}</td>
+                            <td class="align-middle">{{$client->tipo_documento}}</td>
+                            <td class="align-middle">{{$client->num_documento}}</td>
+                            <td class="align-middle">{{$client->telefono}}</td>
+                            <td class="align-middle">{{$client->email}}</td>
+                            <td class="align-middle">{{$client->direccion}}</td>
 
-                            <td>
+                            <td class="align-middle">
                                 <button type="button" class="btn btn-info bg-gradient-info btn-md" data-id_cliente="{{$client->id}}" data-nombre="{{$client->nombre}}" data-tipo_documento="{{$client->tipo_documento}}" data-num_documento="{{$client->num_documento}}" data-direccion="{{$client->direccion}}" data-telefono="{{$client->telefono}}" data-email="{{$client->email}}" data-toggle="modal" data-target="#abrirmodalEditar">
-                                    <i class="fa fa-edit fa-2x"></i> Editar
-                                </button> &nbsp;
+                                    <i class="fas fa-edit "></i> Editar
+                                </button> 
                             </td>
 
 
@@ -95,8 +95,8 @@
 
                     <form action="{{route('cliente.store')}}" method="post" class="form-horizontal">
 
-                        @csrf
-                        <!-- {{ csrf_field() }} -->
+                        <!-- @csrf -->
+                        {{ csrf_field() }}
 
                         @include('cliente.form')
 
@@ -128,11 +128,10 @@
                     <form action="{{route('cliente.update','test')}}" method="post" class="form-horizontal">
 
                         {{method_field('patch')}}
-                        @csrf
-                        <!-- {{ csrf_field() }} -->
+                        <!-- @csrf -->
+                        {{ csrf_field()}}
 
                         <input type="hidden" id="id_cliente" name="id_cliente" value="">
-
                         @include('cliente.form')
 
                     </form>

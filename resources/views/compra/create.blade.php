@@ -2,7 +2,7 @@
 @section('contenido')
 
 
-<main class="main p-5">
+<main class="main p-4 bg-gradient-secondary">
 
     <div class="card-body shadow-lg bg-grey-soft-zipek ">
         <div class="form-group row p-3">
@@ -43,11 +43,12 @@
 
                     <label class="form-control-label font-weight-bold" for="documento">Tipo de Documento</label>
 
-                    <select class="form-control" name="tipo_identificacion" id="tipo_identificacion" required>
+                    <select class="form-control selectpicker" name="tipo_identificacion" id="tipo_identificacion" required>
 
                         <option value="0" disabled>Seleccione</option>
+                         <option value="BOLETA">Boleta</option>
                         <option value="FACTURA">Factura</option>
-                        <option value="TICKET">Ticket</option>
+                       
 
 
                     </select>
@@ -116,7 +117,7 @@
 
                 <h4>Lista de Compras a Proveedores</h4>
 
-                <div class="table-responsive col-md-12">
+                <div class="col-md-12 table-responsive-md">
                     <table id="detalles" class="table table-bordered table-striped table-sm shadow">
                         <thead>
                             <tr class=" bg-gradient-indigo text-uppercase text-center">

@@ -28,9 +28,9 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-sm table-dark shadow bg-gradient-dark">
+                <table class="table table-bordered bg-table-ventas-zipek table-sm shadow ">
                     <thead>
-                        <tr class="bg-primary-zipek text-uppercase text-center text-truncate">
+                        <tr class="bg-gradient-dark text-uppercase text-center text-truncate">
 
                             <th>Rol</th>
                             <th>Descripción</th>
@@ -44,21 +44,21 @@
 
                         <tr class="text-center">
 
-                            <td>{{$rol->nombre}}</td>
-                            <td>{{$rol->descripcion}}</td>
-                            <td>
+                            <td class="align-middle">{{$rol->nombre}}</td>
+                            <td class="align-middle">{{$rol->descripcion}}</td>
+                            <td class="align-middle">
 
                                 @if($rol->condicion=="1")
 
                                 <button type="button" class="btn btn-success bg-gradient-success btn-md">
 
-                                    <i class="fa fa-check fa-2x"></i> Activo
+                                    <i class="fas fa-check "></i> Activo
                                 </button>
 
                                 @else
                                 <button type="button" class="btn btn-danger bg-gradient-danger btn-md">
 
-                                    <i class="fa fa-check fa-2x"></i> Desactivado
+                                    <i class="fas fa-check"></i> Desactivado
                                 </button>
 
                                 @endif

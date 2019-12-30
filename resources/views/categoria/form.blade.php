@@ -14,7 +14,6 @@
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger bg-gradient-danger" data-dismiss="modal"><i class="fa fa-times fa-2x"></i> Cerrar</button>
-        <button type="submit" class="btn btn-success bg-gradient-success"><i class="fa fa-save fa-2x"></i> Guardar</button>
-
+        <button type="button" class="btn btn-danger bg-gradient-danger" data-dismiss="modal"><i class="fas fa-times "></i> Cerrar</button>
+        <button type="submit" class="btn btn-success bg-gradient-success"><i class="fas fa-save "></i> Guardar</button>
     </div>

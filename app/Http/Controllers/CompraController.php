@@ -86,7 +86,7 @@ class CompraController extends Controller
             $compra->idusuario = \Auth::user()->id;
             $compra->tipo_identificacion = $request->tipo_identificacion;
             $compra->num_compra = $request->num_compra;
-            $compra->fecha_compra = $mytime->toDateString();
+            $compra->fecha_compra = $mytime->toDateTimeString();
             $compra->impuesto = '0.19';
             $compra->total = $request->total_pagar;
             $compra->estado = 'Registrado';

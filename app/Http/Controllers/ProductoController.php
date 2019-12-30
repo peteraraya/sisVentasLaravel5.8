@@ -29,7 +29,7 @@ class ProductoController extends Controller
             ->where('p.nombre','LIKE','%'.$sql.'%')
             ->orwhere('p.codigo','LIKE','%'.$sql.'%')
             ->orderBy('p.id','desc')
-            ->paginate(3);
+            ->paginate(10);
            
             /*listar las categorias en ventana modal*/
             $categorias=DB::table('categorias')
@@ -174,5 +174,21 @@ class ProductoController extends Controller
             $producto->save();
             return Redirect::to("producto");
         }
+    }
+
+
+     public function listarPdf(){
+
+
+            $productos = Producto::join('categorias','productos.idcategoria','=','categorias.id')
+            ->select('productos.id','productos.idcategoria','productos.codigo','productos.nombre','categorias.nombre as nombre_categoria','productos.stock','productos.condicion')
+            ->orderBy('productos.nombre', 'desc')->get(); 
+
+
+            $cont=Producto::count();
+
+            $pdf= \PDF::loadView('pdf.productospdf',['productos'=>$productos,'cont'=>$cont]);
+            return $pdf->download('productos.pdf');
+          
     }
 }

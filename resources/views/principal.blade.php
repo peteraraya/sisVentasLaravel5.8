@@ -13,13 +13,15 @@
     <script src="https://kit.fontawesome.com/f89c29ca65.js" crossorigin="anonymous"></script>
     <link href="{{asset('css/simple-line-icons.min.css')}}" rel="stylesheet">
     <!-- libs -->
+     <link href="{{asset('css/libs/bootstrap-select.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs/background-gradient.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs/materialize.css')}}" rel="stylesheet">
     <!-- Main styles for this application -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/bootstrap441/bootstrap.min.css')}}" rel="stylesheet">
+   <link rel="stylesheet" href="{{asset('css/bootstrap441/bootstrap.min.css')}}" rel="stylesheet">
+   
 
 </head>
 
@@ -101,6 +103,7 @@
     <!-- GenesisUI main scripts -->
     <script src="{{asset('js/template.js')}}"></script>
     <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
+    <script src="{{asset('js/libs/bootstrap-select.min.js')}}"></script>
     <!-- Vistas -->
     <script src="{{asset('js/views/categoria.js')}}"></script>
     <script src="{{asset('js/views/producto.js')}}"></script>
@@ -108,6 +111,13 @@
     <script src="{{asset('js/views/cliente.js')}}"></script>
     <script src="{{asset('js/views/user.js')}}"></script>
     <script src="{{asset('js/views/compra.js')}}"></script>
+    <script src="{{asset('js/views/venta.js')}}"></script>
+
+    <script>
+         $(function () {
+            $('select').selectpicker();
+        });
+    </script>
 </body>
 
 </html>

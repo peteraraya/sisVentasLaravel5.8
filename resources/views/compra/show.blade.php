@@ -6,10 +6,10 @@
 
     <div class="card-body p-5 shadow bg-grey-soft-zipek">
 
-        <h2 class="text-center">Detalle de Compra</h2><br /><br /><br />
+        <h3 class="text-center">Detalle de Compra</h3>
 
-
-        <div class="form-group row shadow bg-gradient-indigo">
+        <hr>
+        <div class="form-group row shadow bg-gradient-dark">
 
             <div class="col-md-4">
 
@@ -40,50 +40,50 @@
         <div class="form-group row border p-2">
 
             <h4>Detalle de Compras</h4>
-
+            
             <div class="table-responsive col-md-12">
                 <table id="detalles" class="table table-bordered table-striped table-sm shadow">
                     <thead>
-                        <tr class="bg-gradient-indigo">
+                        <tr class="bg-gradient-indigo text-center">
 
                             <th>Producto</th>
-                            <th>Precio (clp)</th>
+                            <th>Precio <sub>(clp)</sub></th>
                             <th>Cantidad</th>
-                            <th>SubTotal (clp)</th>
+                            <th>SubTotal <sub>(clp)</sub></th>
                         </tr>
                     </thead>
 
-                    <tfoot>
+                    <tfoot class="border-info bg-gradient-secondary">
 
                         <!--<th><h2>TOTAL</h2></th>
                    <th></th>
                    <th></th>
                    <th><h4 id="total">${{$compra->total}}</h4></th>-->
 
-                        <tr>
+                        <tr class="">
                             <th colspan="3">
                                 <p align="right">TOTAL:</p>
                             </th>
                             <th>
-                                <p align="right">${{number_format($compra->total,0)}}</p>
+                                <p align="center">${{number_format($compra->total,0, ",", ".")}}</p>
                             </th>
                         </tr>
 
-                        <tr>
+                        <tr class="">
                             <th colspan="3">
                                 <p align="right">TOTAL IMPUESTO (19%):</p>
                             </th>
                             <th>
-                                <p align="right">${{number_format($compra->total*20/100,0)}}</p>
+                                <p align="center">${{number_format($compra->total*20/100,0, ",", ".")}}</p>
                             </th>
                         </tr>
 
                         <tr>
-                            <th colspan="3">
+                            <th colspan="3" class=" bg-gradient-info">
                                 <p align="right">TOTAL PAGAR:</p>
                             </th>
-                            <th>
-                                <p align="right">${{number_format($compra->total+($compra->total*20/100),0)}}</p>
+                            <th class=" bg-gradient-info">
+                                <p align="center">${{number_format($compra->total+($compra->total*20/100),0, ",", ".")}}</p>
                             </th>
                         </tr>
 
@@ -93,12 +93,11 @@
 
                         @foreach($detalles as $det)
 
-                        <tr>
-
+                       <tr class="text-center align-middle">
                             <td>{{$det->producto}}</td>
-                            <td>${{number_format($det->precio)}}</td>
+                            <td>${{number_format($det->precio,0, ",", ".")}}</td>
                             <td>{{$det->cantidad}}</td>
-                            <td>${{number_format($det->cantidad*$det->precio,0)}}</td>
+                            <td>${{number_format($det->cantidad*$det->precio,0, ",", ".")}}</td>
 
 
                         </tr>

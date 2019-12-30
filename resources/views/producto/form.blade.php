@@ -3,7 +3,7 @@
 
         <div class="col-md-9">
 
-            <select class="form-control" name="id" id="id" required>
+            <select class="form-control selectpicker" name="id" id="id" required>
 
                 <option value="0" disabled>Seleccione</option>
 

@@ -6,12 +6,17 @@
 
 .bg-navy-zipek{
   background: linear-gradient(11deg, rgba(0,0,0,1) 0%, rgba(10,94,153,0.8911939775910365) 93%);
-  color:white ;
+  color:white !important;
 }
 
 .bg-grey-soft-zipek{
   background:-webkit-gradient(linear, left bottom, left top, color-stop(0, #e7ebee), color-stop(1, #f3f3f3b8));
-  color:black;
+  color:black !important;
+}
+
+.bg-table-ventas-zipek{
+       background: -webkit-gradient(linear, left bottom, left top, color-stop(0, hsla(277, 72%, 33%, 0.94)), color-stop(1, hsla(199, 86%, 20%, 0.85)));
+    color: hsl(0, 16%, 91%) !important;
 }
 .bg-gradient-primary {
   color: #ffffff;

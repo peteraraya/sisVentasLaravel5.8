@@ -21,14 +21,17 @@ Route::group(['middleware' => ['guest']], function () {
 
 // Para usuarios autenticados
 Route::group(['middleware' => ['auth']], function () {
+
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     Route::get('/home', 'HomeController@index');
+
 
     Route::group(['middleware' => ['Comprador']], function () {
 
         Route::resource('categoria', 'CategoriaController');
         Route::resource('producto', 'ProductoController');
+        Route::get('/listarProductoPdf', 'ProductoController@listarPdf')->name('productos_pdf');
         Route::resource('proveedor', 'ProveedorController');
         Route::resource('compra', 'CompraController');
         Route::get('/pdfCompra/{id}', 'CompraController@pdf')->name('compra_pdf');
@@ -38,15 +41,23 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::resource('categoria', 'CategoriaController');
         Route::resource('producto', 'ProductoController');
+        Route::get('/listarProductoPdf', 'ProductoController@listarPdf')->name('productos_pdf');
         Route::resource('cliente', 'ClienteController');
+        Route::resource('venta', 'VentaController');
+       Route::get('/pdfVenta/{id}', 'VentaController@pdf')->name('venta_pdf');
+
+
     });
 
     Route::group(['middleware' => ['Administrador']], function () {
 
         Route::resource('categoria', 'CategoriaController');
         Route::resource('producto', 'ProductoController');
+        Route::get('/listarProductoPdf', 'ProductoController@listarPdf')->name('productos_pdf');
         Route::resource('proveedor', 'ProveedorController');
-        Route::resource('compra', 'CompraController'); 
+        Route::resource('compra', 'CompraController');
+        Route::resource('venta', 'VentaController');
+        Route::get('/pdfVenta/{id}', 'VentaController@pdf')->name('venta_pdf');
         Route::resource('cliente', 'ClienteController');
         Route::resource('rol', 'RolController');
         Route::resource('user', 'UserController');

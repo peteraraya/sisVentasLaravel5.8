@@ -17,29 +17,41 @@
                 <h4 class="card-title pb-2">Listado de Productos</h4>
 
                 <button class="btn btn btn-dark bg-gradient-dark btn-md shadow" type="button" data-toggle="modal" data-target="#abrirmodal">
-                    <i class="fa fa-plus"></i>Agregar Producto
+                    <i class="fas fa-plus"></i>Agregar Producto
                 </button>
+
+                <a href="{{url('listarProductoPdf')}}" target="_blank">
+                            <button type="button" class="btn btn-success bg-gradient-success btn-md shadow">
+                                <i class="fas fa-file-pdf"></i> Reporte PDF
+                                
+                                
+                            </button>
+
+                        </a>
+
+
             </div>
-            <div class="card-body bg-light table-responsive">
+            <div class="card-body bg-light">
                 <div class="form-group row">
                     <div class="col-md-6">
                         {!!Form::open(array('url'=>'producto','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
                         <div class="input-group">
 
                             <input type="text" name="buscarTexto" class="form-control" placeholder="Buscar texto" value="{{$buscarTexto}}">
-                            <button type="submit" class="btn btn-primary bg-gradient-primary"><i class="fa fa-search"></i> Buscar</button>
+                            <button type="submit" class="btn btn-primary bg-gradient-primary"><i class="fas fa-search"></i> Buscar</button>
                         </div>
                         {{Form::close()}}
                     </div>
                 </div>
-                <table class="table table-bordered table-striped table-sm  shadow">
+                <div class="table-responsive-md">
+                <table class="table table-bordered bg-table-ventas-zipek table-sm shadow">
                     <thead>
-                        <tr class="bg-gradient-primary text-uppercase text-center text-truncate">
+                        <tr class="bg-gradient-dark text-uppercase text-center text-truncate align-middle">
 
                             <th>Categoria</th>
                             <th>Producto</th>
                             <th>Codigo</th>
-                            <th>Precio Venta (CLP)
+                            <th>Precio Venta<sub>(CLP)</sub>
                             <th>Stock</th>
                             <th>Imagen</th>
                             <th>Estado</th>
@@ -51,61 +63,61 @@
 
                         @foreach($productos as $prod)
 
-                        <tr class="text-center ">
+                        <tr class="text-center">
 
 
-                            <td>{{$prod->categoria}}</td>
-                            <td>{{$prod->nombre}}</td>
-                            <td>{{$prod->codigo}}</td>
-                            <td>$ {{number_format($prod->precio_venta,0, ",", ".")}}</td>
-                            <td>{{$prod->stock}}</td>
+                            <td class="align-middle">{{$prod->categoria}}</td>
+                            <td class="align-middle">{{$prod->nombre}}</td>
+                            <td class="align-middle">{{$prod->codigo}}</td>
+                            <td class="align-middle">$ {{number_format($prod->precio_venta,0, ",", ".")}}</td>
+                            <td class="align-middle">{{$prod->stock}}</td>
 
-                            <td>
+                            <td class="align-middle">
                                 <a href="{{asset('storage/img/producto/'.$prod->imagen)}}" target="_blank">
-                                    <img id="imgTbl_Productos" src="{{asset('storage/img/producto/'.$prod->imagen)}}" id="imagen1" alt="{{$prod->nombre}}" class="img-thumbnail">
+                                    <img id="imgTbl_Productos" src="{{asset('storage/img/producto/'.$prod->imagen)}}" id="imagen1" alt="{{$prod->nombre}}" class="img-responsive border-dark shadow-lg">
                                 </a>
 
                             </td>
 
 
-                            <td>
+                            <td class="align-middle">
 
                                 @if($prod->condicion=="1")
                                 <button type="button" class="btn btn-success bg-gradient-succes bg-gradient-success btn-sm shadow">
 
-                                    <i class="fa fa-check fa-2x"></i> Activo
+                                    <i class="fas fa-check"></i> Activo
                                 </button>
 
                                 @else
 
                                 <button type="button" class="btn btn-danger bg-gradient-danger bg-gradient-danger btn-sm shadow">
 
-                                    <i class="fa fa-check fa-2x"></i> Desactivado
+                                    <i class="fas fa-check"></i> Desactivado
                                 </button>
 
                                 @endif
 
                             </td>
 
-                            <td>
+                            <td class="align-middle">
                                 <button type="button" class="btn btn-info bg-gradient-info btn-sm shadow" data-id_producto="{{$prod->id}}" data-id_categoria="{{$prod->idcategoria}}" data-codigo="{{$prod->codigo}}" data-stock="{{$prod->stock}}" data-nombre="{{$prod->nombre}}" data-precio_venta="{{$prod->precio_venta}}" data-toggle="modal" data-target="#abrirmodalEditar">
-                                    <i class="fa fa-edit fa-2x"></i> Editar
-                                </button> &nbsp;
+                                    <i class="fas fa-edit"></i> Editar
+                                </button> 
                             </td>
 
 
-                            <td>
+                            <td class="align-middle">
 
                                 @if($prod->condicion)
 
                                 <button type="button" class="btn btn-danger btn-sm bg-gradient-danger btn-sm shadow" data-id_producto="{{$prod->id}}" data-toggle="modal" data-target="#cambiarEstado">
-                                    <i class="fa fa-times fa-2x"></i> Desactivar
+                                    <i class="fas fa-times"></i> Desactivar
                                 </button>
 
                                 @else
 
                                 <button type="button" class="btn btn-success bg-gradient-success btn-sm shadow" data-id_producto="{{$prod->id}}" data-toggle="modal" data-target="#cambiarEstado">
-                                    <i class="fa fa-lock fa-2x"></i> Activar
+                                    <i class="fas fa-lock"></i> Activar
                                 </button>
 
                                 @endif
@@ -117,7 +129,7 @@
 
                     </tbody>
                 </table>
-
+            </div>
                 {{$productos->render()}}
 
             </div>
